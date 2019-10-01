@@ -65,7 +65,13 @@ def get_ydl_options(request_options):
     request_vars = {
         'YDL_EXTRACT_AUDIO_FORMAT': None,
         'YDL_RECODE_VIDEO_FORMAT': None,
+        'YDL_OUTPUT_TEMPLATE': None
     }
+    
+    requested_output_path = request_options.get('output_path')
+    
+    if requested_output_path:
+        requested_format['YDL_OUTPUT_TEMPLATE'] = requested_output_path
 
     requested_format = request_options.get('format', 'bestvideo')
 
